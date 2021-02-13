@@ -35,7 +35,13 @@ export default connect(FeaturedMedia);
 
 const Container = styled.div`
   margin-top: 16px;
-  height: 300px;
+  height: 168px;
+  width: 100vw;
+  
+  @media only screen and (min-width: 576px) {
+    width: 900px;
+    height: 422px;
+  }
 `;
 
 const StyledImage = styled(Image)`
@@ -43,4 +49,6 @@ const StyledImage = styled(Image)`
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 18px;
+  opacity: 1;
 `;
