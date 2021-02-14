@@ -7,10 +7,8 @@ import FeaturedMedia from "./featured-media";
 const Post = ({ state, actions, libraries }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
-  console.log(data);
   // Get the data of the post.
   const post = state.source[data.type][data.id];
-  console.log(post);
   // Get the data of the author.
   const author = state.source.author[post.author];
   // Get a human readable date.
@@ -44,6 +42,9 @@ const Post = ({ state, actions, libraries }) => {
       <Global
         styles={css`
           @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+          * {
+            box-sizing: border-box;
+          }
         `}
       />
       {/* Look at the settings to see if we should include the featured image */}
@@ -66,8 +67,7 @@ const Post = ({ state, actions, libraries }) => {
       </SocialMedia>
 
       <Container>
-        <div>
-
+        <Headerpost>
           <Tag>WordPress</Tag>
 
           <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
@@ -84,7 +84,7 @@ const Post = ({ state, actions, libraries }) => {
               )}
             </div>
           )}
-        </div>
+        </Headerpost>
 
         {/* Render the content using the Html2React component so the HTML is processed
         by the processors we included in the libraries.html2react.processors array. */}
@@ -93,7 +93,7 @@ const Post = ({ state, actions, libraries }) => {
         </Content>
       </Container>
       <FooterPost>
-        <Title>También te podría interesar</Title>
+        <FooterTitle>También te podría interesar</FooterTitle>
         <Divider></Divider>
         <Cards>
           {cards}
@@ -105,14 +105,31 @@ const Post = ({ state, actions, libraries }) => {
 
 export default connect(Post);
 
-const SocialMedia = styled.div`
-    position: absolute;
-    z-index: 1;
-    top: 450px;
-    left: -10px;
+const Headerpost = styled.div`
+  padding: 0 16px;
+`;
 
-    img {
-      height: 25px;
+const SocialMedia = styled.div`
+    display: none;
+
+    @media only screen and (min-width: 576px) {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      top: 450px;
+      left: 14px;
+
+      img {
+        height: 25px;
+      }
+    }
+    @media only screen and (min-width: 768px) {
+      display: block;
+      left: 15px;
+    }
+    @media only screen and (min-width: 992px) {
+      display: block;
+      left: -20px;
     }
 `;
 
@@ -135,8 +152,10 @@ const Subtitle = styled.div`
 `;
 
 const Cards = styled.div`
+  width: 100%;
   display: inline-flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 50px;
@@ -144,8 +163,8 @@ const Cards = styled.div`
 
 const Card = styled.div`
   padding: 18px;
-  width: 295px;
-  height: 288px;
+  width: 85%;
+  height: auto;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #7688AA40;
   border-radius: 16px;
@@ -157,6 +176,14 @@ const Card = styled.div`
     object-fit: cover;
     object-position: center;
   }
+
+  @media only screen and (min-width: 576px) {
+    width: 45%;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 30%;
+  }
 `;
 
 const FooterPost = styled.div`
@@ -165,27 +192,42 @@ const FooterPost = styled.div`
 
 const Divider = styled.div`
   width: 100%;
-  border: 1px solid #DD1C1A;
+  border: 0.5px solid #DD1C1A;
   margin-bottom: 38px;
 `;
 
 const Postcontainer = styled.div`
+  width: 95vw;
   background-color: white;
   position: relative;
-  margin-top: 63px;
+  margin: 40px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+  @media only screen and (min-width: 576px) {
+    width: 900px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 63px;
+  }
 `;
 
 const Container = styled.div`
-  width: 752px;
-  margin: 0;
-  padding: 13px 16px;;
+  max-width: 88vw;
+  margin: 0 20px;
+  padding: 32px 0;
   position: relative;
-  top: -70px;
+  top: -30px;
   background: white;
   border-radius: 18px;
+  
+  @media only screen and (min-width: 576px) {
+    width: 752px;
+    top: -70px;
+    margin: 0;
+    padding: 13px 16px;;
+  }
 `;
 
 const Title = styled.h1`
@@ -193,8 +235,25 @@ const Title = styled.h1`
   margin-top: 24px;
   margin-bottom: 8px;
   color: #2A3B5A;
-  letter-spacing: 0px;
-  font: normal bold 31px/37px Rubik;
+  font-size: 24px;
+  line-height: 28px;
+
+  @media only screen and (min-width: 576px) {
+    font: normal bold 31px/37px Rubik;
+  }
+`;
+const FooterTitle = styled.h1`
+  margin: 0;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: #2A3B5A;
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 800;
+
+  @media only screen and (min-width: 576px) {
+    font: normal bold 31px/37px Rubik;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -205,15 +264,24 @@ const StyledLink = styled(Link)`
 
 const Author = styled.p`
   color: #516384;
-  font-size: 1.1em;
+  font-size: 1em;
   display: inline;
+  
+  @media only screen and (min-width: 576px) {
+    font-size: 1.1em;
+  }
 `;
 
 const Tag = styled.h2`
   margin-top: 0;
   color: #6C99EB;
-  font: normal normal 100 25px/29px Rubik;
+  font: normal normal 300 14px/17px Rubik;
   letter-spacing: 0px;
+  
+  @media only screen and (min-width: 576px) {
+    font: normal normal 100 25px/29px Rubik;
+  }
+
 `;
 
 /**

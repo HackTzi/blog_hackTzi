@@ -35,13 +35,9 @@ export default connect(FeaturedMedia);
 
 const Container = styled.div`
   margin-top: 16px;
-  height: 168px;
-  width: 100vw;
-  
-  @media only screen and (min-width: 576px) {
-    width: 900px;
-    height: 422px;
-  }
+  width: 100%;
+  padding-top: 46.932%;
+  position: relative;
 `;
 
 const StyledImage = styled(Image)`
@@ -51,4 +47,10 @@ const StyledImage = styled(Image)`
   object-fit: cover;
   border-radius: 18px;
   opacity: 1;
+  //
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 `;
