@@ -2,6 +2,7 @@ import React from "react";
 import { Global, css, connect, styled, Head } from "frontity";
 import Switch from "@frontity/components/switch";
 import Header from "./header";
+import FixedHeader from "./fixed-header";
 import List from "./list";
 import Post from "./post";
 import Loading from "./loading";
@@ -32,6 +33,7 @@ const Theme = ({ state }) => {
       {/* Add the header of the site. */}
       <HeadContainer>
         <Header />
+        <FixedHeader />
       </HeadContainer>
 
       {/* Add the main section. It renders a different component depending
@@ -67,7 +69,7 @@ const HeadContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #1f38c5;
+  background-color: #ffffff;
 `;
 
 const Main = styled.div`
