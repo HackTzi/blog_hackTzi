@@ -15,6 +15,7 @@ import PageError from "./page-error";
 const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
+  const { mode } = state.theme;
 
   return (
     <>
@@ -36,7 +37,7 @@ const Theme = ({ state }) => {
 
       {/* Add the main section. It renders a different component depending
       on the type of URL we are in. */}
-      <Main>
+      <Main theme={mode}>
         <Switch>
           <Loading when={data.isFetching} />
           <List when={data.isArchive} />
@@ -73,9 +74,6 @@ const HeadContainer = styled.div`
 const Main = styled.div`
   display: flex;
   justify-content: center;
-  background-image: linear-gradient(
-    180deg,
-    rgba(66, 174, 228, 0.1),
-    rgba(66, 174, 228, 0)
-  );
+  // background: ${props => props.theme === 'light' ? 'white' : "#172237"};
+  background: ${props => props.theme === 'light' ? 'white' : "#1C283E"};
 `;
