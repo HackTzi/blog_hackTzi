@@ -1,19 +1,18 @@
 import React from "react";
 
-export const HamburgerIcon = ({ size, color }) => {
+export const HamburgerIcon = ({ size }) => {
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       height={size}
       width={size}
-      color={color}
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <title>Open menu</title>
-      <g fill="currentColor">
-        <rect height="3" width="23" rx="1" ry="1" x=".5" y="2.5" />
-        <rect height="3" width="23" rx="1" ry="1" x=".5" y="10.5" />
-        <rect height="3" width="23" rx="1" ry="1" x=".5" y="18.5" />
+      viewBox="0 0 20 17">
+      <g id="menu" transform="translate(0 1)">
+        <g id="burguer" transform="translate(-24.5 -29.5)">
+          <line id="Line_1" data-name="Line 1" x2="20" transform="translate(24.5 29.5)" fill="none" stroke="#7688aa" stroke-width="2"/>
+          <line id="Line_2" data-name="Line 2" x2="20" transform="translate(24.5 37)" fill="none" stroke="#7688aa" stroke-width="2"/>
+          <line id="Line_3" data-name="Line 3" x2="20" transform="translate(24.5 44.5)" fill="none" stroke="#7688aa" stroke-width="2" stroke-dasharray="4 4"/>
+        </g>
       </g>
     </svg>
   );
@@ -22,16 +21,12 @@ export const HamburgerIcon = ({ size, color }) => {
 export const CloseIcon = ({ size, color }) => {
   return (
     <svg
-      height={size}
-      width={size}
-      viewBox="0 0 24 24"
-      color={color}
-      xmlns="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg"
+    height={size}
+    width={size}
+    viewBox="0 0 15.557 15.556"
     >
-      <title>Close Menu</title>
-      <g fill="currentColor">
-        <path d="M14.3 12.179a.25.25 0 0 1 0-.354l9.263-9.262A1.5 1.5 0 0 0 21.439.442L12.177 9.7a.25.25 0 0 1-.354 0L2.561.442A1.5 1.5 0 0 0 .439 2.563L9.7 11.825a.25.25 0 0 1 0 .354L.439 21.442a1.5 1.5 0 0 0 2.122 2.121l9.262-9.263a.25.25 0 0 1 .354 0l9.262 9.263a1.5 1.5 0 0 0 2.122-2.121z" />
-      </g>
+      <path id="Union_3" data-name="Union 3" d="M7.778,9.192,1.414,15.557,0,14.142,6.364,7.778,0,1.414,1.414,0,7.778,6.364,14.142,0l1.415,1.414L9.192,7.778l6.364,6.364-1.415,1.415Z" fill="#516384"/>
     </svg>
   );
 };
