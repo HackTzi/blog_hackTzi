@@ -2,6 +2,9 @@ import React from "react";
 import { connect, styled, decode } from "frontity";
 import Item from "./list-item";
 import Pagination from "./pagination";
+import Card from "../shared/card";
+import CardHorizontal from "../shared/card-horizontal";
+import CardHorizontalMini from "../shared/card-horizontal-mini";
 
 const List = ({ state }) => {
   // Get the data of the current list.
@@ -31,11 +34,66 @@ const List = ({ state }) => {
         return <Item key={item.id} item={item} />;
       })}
       <Pagination />
+      <SeeMore>
+        <TopPosts>
+          <TopPostsTitle>Importante</TopPostsTitle>
+          <Card />
+          <CardHorizontalMini />
+          <CardHorizontalMini />
+          <CardHorizontalMini />
+        </TopPosts>
+        <LastPosts>
+          <LastPostsTitle>Últimas noticias <SeeMoreLink href="#seemore">Ver más</SeeMoreLink></LastPostsTitle>
+          <CardHorizontal />
+          <CardHorizontal />
+          <CardHorizontal />
+          <CardHorizontal />
+        </LastPosts>
+      </SeeMore>
     </Container>
   );
 };
 
 export default connect(List);
+
+const SeeMore = styled.div`
+  display: grid;
+  grid-template-columns: [xi] 257px [x2] 1fr [xf];
+  column-gap: 18px;
+`;
+
+const TopPosts = styled.div`
+  grid-column: xi / x2;
+  height: 100px;
+`;
+
+const LastPosts = styled.div`
+  grid-column: x2 / xf;
+  height: 100px;
+`;
+
+const TopPostsTitle = styled.h1`
+  border-bottom: 2px solid red;
+  padding-bottom: 5px;
+  font-size: 2em;
+  font-weight: 400;
+`;
+
+const LastPostsTitle = styled.h1`
+  border-bottom: 2px solid red;
+  padding-bottom: 5px;
+  font-size: 2em;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`;
+
+const SeeMoreLink = styled.a`
+  font-size: 0.34em;
+  text-transform: uppercase;
+  color: red !important;
+`;
 
 const Container = styled.section`
   width: 800px;
