@@ -10,6 +10,8 @@ const List = ({ state }) => {
   // Get the data of the current list.
   const data = state.source.get(state.router.link);
 
+  // console.log(decode(state.source));
+
   return (
     <Container>
       {/* If the list is a taxonomy, we render a title. */}
@@ -44,10 +46,12 @@ const List = ({ state }) => {
         </TopPosts>
         <LastPosts>
           <LastPostsTitle>Últimas noticias <SeeMoreLink href="#seemore">Ver más</SeeMoreLink></LastPostsTitle>
-          <CardHorizontal />
-          <CardHorizontal />
-          <CardHorizontal />
-          <CardHorizontal />
+          {data.items.slice(0, 4).map(({ type, id }) => {
+            const item = state.source[type][id];
+            console.log('🧡 item', item);
+            // Render one Item component for each one.
+            return <CardHorizontal key={item.id} item={item} />;
+          })}
         </LastPosts>
       </SeeMore>
     </Container>
