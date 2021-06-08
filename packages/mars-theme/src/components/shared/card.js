@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 /**
  * InputSearch Component
  *
@@ -11,9 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
  */
 const Card = ({ state, item }) => {
   const author = state.source.author[item.author];
-  const date = new Date(item.date);
   const media = state.theme.featured.showOnPost ? state.source.attachment[item.featured_media] : null;
-  const category = state.source.category[item.categories[0]];
 
   return (
     <CardContainer>

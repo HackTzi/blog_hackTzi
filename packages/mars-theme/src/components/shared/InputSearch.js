@@ -12,8 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const InputSearch = ({ state, actions }) => {
   return (
     <InputSearchContainer>
-      <div class="search__container">
-        <input class="search__input" type="text" />
+      <div className="search__container">
+        <input className="search__input" type="text" />
         <FontAwesomeIcon icon="search" color="white" className="search__icon" />
       </div>
     </InputSearchContainer>

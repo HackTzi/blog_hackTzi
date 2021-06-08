@@ -5,10 +5,12 @@ import Pagination from "./pagination";
 import Card from "../shared/card";
 import CardHorizontal from "../shared/card-horizontal";
 import CardHorizontalMini from "../shared/card-horizontal-mini";
+import LoadingSpinner from "../shared/loading-spinner";
 
 const List = ({ state }) => {
   // Get the data of the current list.
   const data = state.source.get(state.router.link);
+  const latestPosts = state.source.get('/');
 
   // console.log(decode(state.source));
 
@@ -39,21 +41,35 @@ const List = ({ state }) => {
       <SeeMore>
         <TopPosts>
           <TopPostsTitle>Importante</TopPostsTitle>
-          {data.items.slice(0, 4).map(({ type, id }, i) => {
+          {
+            latestPosts.items ? latestPosts.items.slice(0, 4).map(({ type, id }, i) => {
             const item = state.source[type][id];
             console.log('🧡 item', item);
             // Render one Item component for each one.
             if (i === 0) return <Card key={item.id} item={item} />
             return <CardHorizontalMini key={item.id} item={item} />;
-          })}
+            }) :
+              (
+                <CenterDiv>
+                  <LoadingSpinner />
+                </CenterDiv>
+              )
+          }
         </TopPosts>
         <LastPosts>
-          <LastPostsTitle>Últimas noticias <SeeMoreLink href="#seemore">Ver más</SeeMoreLink></LastPostsTitle>
-          {data.items.slice(0, 4).map(({ type, id }) => {
-            const item = state.source[type][id];
-            // Render one Item component for each one.
-            return <CardHorizontal key={item.id} item={item} />;
-          })}
+          <LastPostsTitle>Últimas noticias <SeeMoreLink href="/page/2/">Ver más</SeeMoreLink></LastPostsTitle>
+          {
+            latestPosts.items ? latestPosts.items.slice(0, 4).map(({ type, id }) => {
+              const item = state.source[type][id];
+              // Render one Item component for each one.
+              return <CardHorizontal key={item.id} item={item} />;
+            }) :
+              (
+                <CenterDiv>
+                  <LoadingSpinner />
+                </CenterDiv>
+              )
+          }
         </LastPosts>
       </SeeMore>
     </Container>
@@ -61,6 +77,11 @@ const List = ({ state }) => {
 };
 
 export default connect(List);
+
+const CenterDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const SeeMore = styled.div`
   display: grid;

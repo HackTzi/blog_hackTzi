@@ -10,7 +10,6 @@ import dateFormat from "../utilities/date-format";
  * when we wrap this component in `connect(...)`
  */
 const CardHorizontalMini = ({ state, item }) => {
-  const author = state.source.author[item.author];
   const date = new Date(item.date);
 
   return (
