@@ -39,16 +39,18 @@ const List = ({ state }) => {
       <SeeMore>
         <TopPosts>
           <TopPostsTitle>Importante</TopPostsTitle>
-          <Card />
-          <CardHorizontalMini />
-          <CardHorizontalMini />
-          <CardHorizontalMini />
+          {data.items.slice(0, 4).map(({ type, id }, i) => {
+            const item = state.source[type][id];
+            console.log('🧡 item', item);
+            // Render one Item component for each one.
+            if (i === 0) return <Card key={item.id} item={item} />
+            return <CardHorizontalMini key={item.id} item={item} />;
+          })}
         </TopPosts>
         <LastPosts>
           <LastPostsTitle>Últimas noticias <SeeMoreLink href="#seemore">Ver más</SeeMoreLink></LastPostsTitle>
           {data.items.slice(0, 4).map(({ type, id }) => {
             const item = state.source[type][id];
-            console.log('🧡 item', item);
             // Render one Item component for each one.
             return <CardHorizontal key={item.id} item={item} />;
           })}
@@ -64,6 +66,7 @@ const SeeMore = styled.div`
   display: grid;
   grid-template-columns: [xi] 257px [x2] 1fr [xf];
   column-gap: 18px;
+  margin-bottom: 50px;
 `;
 
 const TopPosts = styled.div`

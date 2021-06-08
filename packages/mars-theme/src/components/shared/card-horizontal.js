@@ -44,10 +44,6 @@ const CardHorizontal = ({ state, item }) => {
  */
 export default connect(CardHorizontal);
 
-// const StyledImage = styled(Image)`
-
-// `;
-
 const Subtitle = styled.a`
   font-size: 0.9em;
   text-transform: uppercase;

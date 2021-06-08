@@ -10,14 +10,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
  * when we wrap this component in `connect(...)`
  */
 const Card = ({ state, item }) => {
+  const author = state.source.author[item.author];
+  const date = new Date(item.date);
+  const media = state.theme.featured.showOnPost ? state.source.attachment[item.featured_media] : null;
+  const category = state.source.category[item.categories[0]];
+
   return (
     <CardContainer>
-      <img src="https://images.unsplash.com/photo-1613140952277-1c6bd0386ff5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw=&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="img" />
-      <Subtitle theme={state}>Sebastian Ramos / Freepik / Reflex</Subtitle>
+      <ImageLink href={item.link}>
+        {media ?
+          (<img src={media.source_url} alt={media.title.rendered} />) :
+          (<img src="https://images.unsplash.com/photo-1613140952277-1c6bd0386ff5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw=&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="img" />)}
+      </ImageLink>
+      <Subtitle theme={state}>{author.name} / Freepik / Reflex</Subtitle>
       <Cardtitle theme={state}>
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates reprehenderit recusandae architecto ut eaque voluptatem maxime libero ad officiis! Nihil debitis magni odit neque corporis quo fugit repudiandae natus distinctio!</span>
+        <a href={item.link}>{item.title.rendered}</a>
       </Cardtitle>
-      <Cardfooter theme={state}>Sebastian Ramos</Cardfooter>
+      <Cardfooter href={author.link} theme={state}>{author.name}</Cardfooter>
     </CardContainer>
   );
 };
@@ -28,6 +37,10 @@ const Card = ({ state, item }) => {
  */
 export default connect(Card);
 
+const ImageLink = styled.a`
+  // ImageLink
+`;
+
 const Subtitle = styled.div`
   font-size: 0.6em;
   text-align: right;
@@ -37,7 +50,7 @@ const Subtitle = styled.div`
 const CardContainer = styled.div`
   padding: 16px 18px 13px;
   width: 85%;
-  height: auto;
+  min-height: 270px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #7688AA40;
   border-radius: 16px;
@@ -52,17 +65,25 @@ const CardContainer = styled.div`
   }
 `;
 
-const Cardfooter = styled.span`
-  color: #7d8ca6;
+const Cardfooter = styled.a`
+  font-family: 'Merriweather';
+  font-weight: 400;
+  color: hsla(219, 23%, 56%, 1);
+
+  &:visited {
+    color: hsla(219, 23%, 56%, 1);
+  }
 `;
 
 const Cardtitle = styled.div`
   max-height: 4.6em;
+  min-height: 1.6em;
   overflow: hidden;
   margin-top: 6px;
   margin-bottom: 11px;
 
-  & span {
+  & a,
+  &:visited {
     text-align: left;
     font: normal normal normal 20px/24px Rubik;
     font-weight: 400;

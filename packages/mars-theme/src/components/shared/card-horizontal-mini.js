@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
+import dateFormat from "../utilities/date-format";
 /**
  * InputSearch Component
  *
@@ -8,16 +9,19 @@ import { connect, styled } from "frontity";
  * The `state`, `actions`, `libraries` props are provided by the global context,
  * when we wrap this component in `connect(...)`
  */
-const CardHorizontalMini = ({ state, actions }) => {
+const CardHorizontalMini = ({ state, item }) => {
+  const author = state.source.author[item.author];
+  const date = new Date(item.date);
+
   return (
     <CardContainer>
       <CardBody>
         <Cardtitle>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi vel, ducimus eos unde obcaecati expedita enim perferendis, inventore mollitia, dicta sit fugit labore! Animi velit, nihil omnis illum aliquid obcaecati.</p>
+          <a href={item.link}>{item.title.rendered}</a>
         </Cardtitle>
         <Cardfooter>
           {/* <Author>Sebastian Ramos</Author> */}
-          <Date>Febrero, 21 2021</Date>
+          <DateSpan>{dateFormat(date)}</DateSpan>
         </Cardfooter>
       </CardBody>
     </CardContainer>
@@ -42,9 +46,9 @@ const CardContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   gap: 11px;
-  padding: 11px 8px 11px 19px;
+  padding: 5px 8px 11px 19px;
   width: 100%;
-  height: 141px;
+  height: 87px;
   max-height: 108px;
   overflow: hidden;
   background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -65,11 +69,12 @@ const Cardfooter = styled.div`
 `;
 
 const Cardtitle = styled.div`
-  max-height: 3.5em;
+  max-height: 3.1em;
+  min-height: 3.1em;
   overflow: hidden;
-  margin-bottom: 11px;
+  margin-bottom: 6px;
 
-  & p {
+  & a {
     text-align: left;
     font: normal normal normal 20px/24px Rubik;
     font-weight: 400;
@@ -86,7 +91,7 @@ const Author = styled.span`
   color: hsla(219, 23%, 56%, 1);
 `;
 
-const Date = styled.span`
+const DateSpan = styled.span`
   font-family: 'Merriweather';
   font-weight: 400;
   color: hsla(219, 23%, 56%, 1);
