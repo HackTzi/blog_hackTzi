@@ -45,8 +45,9 @@ const Subtitle = styled.div`
 `;
 
 const CardContainer = styled.div`
+  box-sizing: border-box;
   padding: 16px 18px 13px;
-  width: 85%;
+  width: 100%;
   min-height: 270px;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #7688AA40;

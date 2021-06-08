@@ -116,10 +116,20 @@ const Author = styled.a`
   font-family: 'Merriweather';
   font-weight: 400;
   color: hsla(219, 23%, 56%, 1);
+  display: 0.9em;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1em;
+  }
 `;
 
 const DateSpan = styled.span`
   font-family: 'Merriweather';
   font-weight: 400;
   color: hsla(219, 23%, 56%, 1);
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1em;
+  }
 `;

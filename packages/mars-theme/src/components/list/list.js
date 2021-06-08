@@ -84,20 +84,24 @@ const CenterDiv = styled.div`
 `;
 
 const SeeMore = styled.div`
-  display: grid;
-  grid-template-columns: [xi] 257px [x2] 1fr [xf];
-  column-gap: 18px;
+  display: block;
   margin-bottom: 50px;
+
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: [xi] 257px [x2] 1fr [xf];
+    column-gap: 18px;
+  }
 `;
 
 const TopPosts = styled.div`
   grid-column: xi / x2;
-  height: 100px;
+  // height: 100px;
 `;
 
 const LastPosts = styled.div`
   grid-column: x2 / xf;
-  height: 100px;
+  // height: 100px;
 `;
 
 const TopPostsTitle = styled.h1`
