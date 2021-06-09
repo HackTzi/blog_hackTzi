@@ -25,7 +25,7 @@ const marsTheme = {
         showOnList: false,
         showOnPost: false,
       },
-      mode: 'dark',
+      mode: 'light',
     },
   },
 

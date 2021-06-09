@@ -49,7 +49,6 @@ const Post = ({ state, actions, libraries }) => {
             --white-text-darken-2: #F2F6FD;
             --blue-grey: #7688AA;
           }
-          @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
           * {
             box-sizing: border-box;
           }
@@ -74,7 +73,7 @@ const Post = ({ state, actions, libraries }) => {
         </p>
       </SocialMedia>
 
-      <Container theme={mode}>
+      <Container state={state} theme={mode}>
         <Headerpost>
           <Tag>WordPress</Tag>
 
@@ -228,6 +227,7 @@ const Postcontainer = styled.div`
 const Container = styled.div`
   max-width: 88vw;
   margin: 0 20px;
+  margin-top: ${props => props.state.theme.featured.showOnPost ? "20px" : '0'};
   padding: 32px 0;
   position: relative;
   top: -30px;
@@ -238,6 +238,7 @@ const Container = styled.div`
     width: 752px;
     top: -70px;
     margin: 0;
+    margin-top: ${props => props.state.theme.featured.showOnPost ? "20px" : '0'};
     padding: 13px 16px;;
   }
 `;
