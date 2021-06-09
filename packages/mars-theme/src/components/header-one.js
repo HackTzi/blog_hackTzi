@@ -47,6 +47,7 @@ export default connect(HeaderOne);
 const StyledDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
+  min-height: 84px;
   padding: 7px 20px;
   display: flex;
   justify-content: space-around;
