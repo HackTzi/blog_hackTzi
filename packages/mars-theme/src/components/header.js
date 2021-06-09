@@ -3,10 +3,12 @@ import { connect, styled } from "frontity";
 import Link from "./link";
 import Nav from "./nav";
 import MobileMenu from "./menu";
+import HeaderOne from "./header-one";
 
 const Header = ({ state }) => {
   return (
     <>
+      <HeaderOne />
       <Container>
         <StyledLink link="/">
           <Title>{state.frontity.title}</Title>
@@ -15,6 +17,7 @@ const Header = ({ state }) => {
         <MobileMenu />
       </Container>
       <Nav />
+      menu
     </>
   );
 };
@@ -22,7 +25,7 @@ const Header = ({ state }) => {
 // Connect the Header component to get access to the `state` in it's `props`
 export default connect(Header);
 
-const Container = styled.div`
+const Container = styled.header`
   width: 848px;
   max-width: 100%;
   box-sizing: border-box;
