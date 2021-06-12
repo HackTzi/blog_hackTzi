@@ -1,6 +1,9 @@
 import React from "react";
 import { connect, styled } from "frontity";
+
 import { HamburgerIcon } from "./menu-icon";
+import Button from "./utilities/Button";
+
 import Logo from "../assets/Icons/Logo_HackTzi.svg";
 import sun from "../assets/Icons/sun.svg";
 
@@ -20,7 +23,9 @@ const HeaderOne = ({ state }) => {
           <a href="#">Telegram</a>
         </li>
       </UnorderList>
-      <Img src={Logo}></Img>
+      <ImgContainer href="www.facebook.com">
+        <img src={Logo}></img>
+      </ImgContainer>
       <Toggle>
         <div className="container">
           <img src={sun} />
@@ -35,7 +40,12 @@ const HeaderOne = ({ state }) => {
           <a href="#">Entrar</a>
         </li>
         <li>
-          <a href="#">Registrarse</a>
+          <Button
+            href="#"
+            content="Registrate"
+            type="button"
+            style={({ width: "135px" }, { height: "35px" })}
+          />
         </li>
       </UnorderList>
     </StyledDiv>
@@ -47,16 +57,29 @@ export default connect(HeaderOne);
 const StyledDiv = styled.div`
   box-sizing: border-box;
   width: 100%;
-  min-height: 84px;
+  height: 84px;
   padding: 7px 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   font-family: "Rubik", sans-serif;
   font-weight: 300;
   font-size: 14px;
   color: #516384;
   background-color: #fff;
+
+  a:hover {
+    cursor: pinter;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 800px) {
+    justify-content: space-around;
+
+    ul {
+      display: none;
+    }
+  }
 `;
 const UnorderList = styled.ul`
   margin: 0;
@@ -65,11 +88,14 @@ const UnorderList = styled.ul`
   & li {
     list-style: none;
     display: inline-block;
-    margin-inline: 20px;
+    margin-inline: 10px;
   }
 `;
-const Img = styled.img`
-  width: 100px;
+const ImgContainer = styled.a`
+  img {
+    width: 135px;
+    heigth: 40px;
+  }
 `;
 const Toggle = styled.label`
   .container {
