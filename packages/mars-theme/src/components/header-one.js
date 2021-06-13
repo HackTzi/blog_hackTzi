@@ -23,7 +23,7 @@ const HeaderOne = ({ state }) => {
           <a href="#">Telegram</a>
         </li>
       </UnorderList>
-      <ImgContainer href="www.facebook.com">
+      <ImgContainer href="/">
         <img src={Logo}></img>
       </ImgContainer>
       <Toggle>
