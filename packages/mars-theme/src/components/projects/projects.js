@@ -12,7 +12,7 @@ const Projects = ({ state }) => {
         <ProjectsLeft>
           <Title>Nuestros proyectos</Title>
           <Subtitle>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam laborum debitis minima magnam repellat libero error, recusandae, blanditiis culpa quod molestiae repudiandae, distinctio maiores nobis dolor? Voluptate non harum voluptas.</Subtitle>
-          <MoreProjects>
+          <MoreProjects href='#algunapaginaporalli'>
             Más proyectos <FontAwesomeIcon icon={faLongArrowAltRight} className="arrow_icon" />
           </MoreProjects>
         </ProjectsLeft>
@@ -56,11 +56,12 @@ color: hsla(219, 36%, 26%, 1);
 const Subtitle = styled.p`
 color: hsla(219, 23%, 56%, 1);
 `;
-const MoreProjects = styled.span`
+const MoreProjects = styled.a`
 color: hsla(219, 36%, 26%, 1);
 display: flex;
 align-items: center;
 font-weigth: 300;
+font-size: 0.9rem;
 
 & .arrow_icon {
   margin-left: 10px;
