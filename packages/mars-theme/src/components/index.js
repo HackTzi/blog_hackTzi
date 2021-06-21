@@ -75,6 +75,7 @@ const HeadContainer = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: #1f38c5;
+  overflow: hidden;
 `;
 
 const Main = styled.div`

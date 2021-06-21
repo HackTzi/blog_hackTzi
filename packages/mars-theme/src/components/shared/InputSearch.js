@@ -69,11 +69,11 @@ top: 8px;
 }
 
 & .search__input:hover,
-  .search__input:focus {
-      outline: inherit;
-  }
+.search__input:focus {
+    outline: inherit;
+}
 
-  & .searchButton i{
-    color: #0052cc;
-  }
+& .searchButton i{
+  color: #0052cc;
+}
 `;

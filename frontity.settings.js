@@ -16,14 +16,6 @@ const settings = {
             [
               "Home",
               "/"
-            ],
-            [
-              "Error 404",
-              "/category/nature/"
-            ],
-            [
-              "Example page",
-              "/pagina-ejemplo/"
             ]
           ],
           "featured": {

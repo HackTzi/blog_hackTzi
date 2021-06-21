@@ -36,6 +36,12 @@ export default connect(Nav);
 const SearchBar = styled.div`
     position: absolute;
     right: 42px;
+
+    @media only screen and (max-width: 768px) {
+      position: relative;
+      right: 0;
+      margin: 0 auto;
+    }
 `;
 
 const NavContainer = styled.nav`
@@ -52,21 +58,17 @@ const NavContainer = styled.nav`
   display: flex;
   justify-content: center;
   position: relative;
-
-  @media screen and (max-width: 560px) {
-    display: none;
-  }
 `;
 
 const NavItem = styled.div`
   padding: 0;
-  margin: 4px 16px 0;
   color: #fff;
   // background: grey;
   font-size: 0.9em;
   box-sizing: border-box;
   flex-shrink: 0;
   display: flex;
+  margin: 4px 16px 0;
   justify-content: center;
 
   & > a {
@@ -107,5 +109,9 @@ const NavItem = styled.div`
       // display: inline-block;
       width: 24px;
     }
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: none;
   }
 `;
