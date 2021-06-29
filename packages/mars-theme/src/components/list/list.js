@@ -6,6 +6,7 @@ import Card from "../shared/card";
 import CardHorizontal from "../shared/card-horizontal";
 import CardHorizontalMini from "../shared/card-horizontal-mini";
 import LoadingSpinner from "../shared/loading-spinner";
+import Projects from "../projects/projects";
 
 const List = ({ state }) => {
   // Get the data of the current list.
@@ -38,6 +39,7 @@ const List = ({ state }) => {
         return <Item key={item.id} item={item} />;
       })}
       <Pagination />
+      <Projects />
       <SeeMore>
         <TopPosts>
           <TopPostsTitle>Importante</TopPostsTitle>

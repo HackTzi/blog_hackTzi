@@ -27,6 +27,7 @@
     "@frontity/mars-theme": "./packages/mars-theme",
     "@frontity/tiny-router": "^1.4.2",
     "@frontity/wp-source": "^1.11.5",
+    "animejs": "^3.2.1",
     "frontity": "^1.16.0"
   }
 }
