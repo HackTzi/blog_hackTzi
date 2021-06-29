@@ -57,18 +57,16 @@ const Theme = ({ state }) => {
 export default connect(Theme);
 
 const globalStyles = css`
-  @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+  @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
   body {
     margin: 0;
-    font-family: 'Rubik', sans-serif !important;
+    font-family: "Rubik", sans-serif !important;
   }
   a,
   a:visited {
     color: inherit;
     text-decoration: none;
   }
-
 `;
 
 const HeadContainer = styled.div`
@@ -81,7 +79,9 @@ const HeadContainer = styled.div`
 
 const Main = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  // background: ${props => props.theme === 'light' ? 'white' : "#172237"};
-  background: ${props => props.theme === 'light' ? 'white' : "#1C283E"};
+  align-items: center;
+  // background: ${(props) => (props.theme === "light" ? "white" : "#172237")};
+  background: ${(props) => (props.theme === "light" ? "white" : "#1C283E")};
 `;
