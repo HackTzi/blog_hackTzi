@@ -96,6 +96,10 @@ const Container = styled.div`
   margin: 0;
   display: flex;
   align-items: center;
+
+  @media only screen and (max-width: 767px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const CardImage = styled.img`
@@ -110,7 +114,11 @@ const CardImage = styled.img`
 `;
 
 const CarouselBody = styled.div`
-width: 320px;
+width: 800px;
+
+@media only screen and (max-width: 767px) {
+  width: 100%;
+}
 `;
 
 const CarouselButtons = styled.div`
@@ -122,9 +130,13 @@ const CarouselButtons = styled.div`
 
 const CarouselCards = styled.div/*css*/`
   display: inline-flex;
-  max-width: 320px;
+  max-width: 800px;
   overflow-x: hidden;
   margin-bottom: 30px;
+
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const CarouselTicks = styled.div/*css*/`

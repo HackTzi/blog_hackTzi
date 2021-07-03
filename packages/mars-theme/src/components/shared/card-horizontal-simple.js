@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
-import dateFormat from "../utilities/date-format";
 /**
  * InputSearch Component
  *
@@ -9,14 +8,12 @@ import dateFormat from "../utilities/date-format";
  * The `state`, `actions`, `libraries` props are provided by the global context,
  * when we wrap this component in `connect(...)`
  */
-const CardHorizontal = ({ state, item }) => {
-  const author = state.source.author[item.author];
-  const date = new Date(item.date);
+const CardHorizontalSimple = ({ state, item, hasBorder }) => {
   const media = state.theme.featured.showOnPost ? state.source.attachment[item.featured_media] : null;
   const category = state.source.category[item.categories[0]];
 
   return (
-    <CardContainer>
+    <CardContainer hasBorder={hasBorder}>
       <ImageLink href={item.link}>
         {media ?
           (<img src={media.source_url} alt={media.title.rendered} />) :
@@ -27,10 +24,6 @@ const CardHorizontal = ({ state, item }) => {
         <Cardtitle>
           <a href={item.link}>{item.title.rendered}</a>
         </Cardtitle>
-        <Cardfooter>
-          <Author href={author.link}>{author.name}</Author>
-          <DateSpan>{dateFormat(date)}</DateSpan>
-        </Cardfooter>
       </CardBody>
     </CardContainer>
   );
@@ -40,10 +33,10 @@ const CardHorizontal = ({ state, item }) => {
  * Connect Pagination to global context to give it access to
  * `state`, `actions`, `libraries` via props
  */
-export default connect(CardHorizontal);
+export default connect(CardHorizontalSimple);
 
 const Subtitle = styled.a`
-  font-size: 0.9em;
+  font-size: 1em;
   text-transform: uppercase;
   color: hsla(219, 76%, 67%, 1);
   font-weight: 700;
@@ -57,20 +50,19 @@ const Subtitle = styled.a`
 const CardContainer = styled.div`
   box-sizing: border-box;
   display: flex;
-  gap: 11px;
-  padding: 21px 30px 11px 15px;
+  gap: 18px;
+  padding-bottom: 15px;
   width: 100%;
   height: 141px;
   max-height: 141px;
   overflow: hidden;
   background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 6px #7688AA40;
-  border-radius: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid ${props => props.hasBorder ? 'rgba(112, 112, 112, 0.37)' : 'transparent'};
 
   img {
-    max-width: 127px;
-    min-width: 127px;
+    max-width: 150px;
+    min-width: 150px;
     height: 100%;
     border-radius: 16px;
     object-fit: cover;
@@ -85,6 +77,7 @@ const ImageLink = styled.a`
 const CardBody = styled.div`
   display: block;
   width: 100%;
+  padding-top: 10px;
 `;
 
 const Cardfooter = styled.div`
@@ -96,8 +89,7 @@ const Cardfooter = styled.div`
 const Cardtitle = styled.div`
   height: 3.2em;
   overflow: hidden;
-  margin-top: 6px;
-  margin-bottom: 15px;
+  margin: 13px 0;
 
   & a {
     text-align: left;

@@ -49,12 +49,25 @@ top: -27px;
 const ProjectsLeft = styled.div`
 max-width: 300px;
 padding: 90px;
+
+@media only screen and (max-width: 767px) {
+  max-width: 100%;
+  padding: 50px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 `;
 const Title = styled.h2`
 color: hsla(219, 36%, 26%, 1);
 `;
 const Subtitle = styled.p`
 color: hsla(219, 23%, 56%, 1);
+
+@media only screen and (max-width: 767px) {
+  text-align: center;
+}
 `;
 const MoreProjects = styled.a`
 color: hsla(219, 36%, 26%, 1);
@@ -69,4 +82,9 @@ font-size: 0.9rem;
 `;
 const ProjectBody = styled.div`
   display: inline-flex;
+
+  @media only screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;

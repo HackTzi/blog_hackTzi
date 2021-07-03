@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, styled, decode } from "frontity";
+import { connect, styled, decode, css } from "frontity";
 import Item from "./list-item";
 import Pagination from "./pagination";
 import Card from "../shared/card";
@@ -9,6 +9,7 @@ import LoadingSpinner from "../shared/loading-spinner";
 import Projects from "../projects/projects";
 import AboutImage from "../../assets/Icons/aboutus.svg";
 import RigthArrow from "../../assets/Icons/rightarrow.svg";
+import Hero from "../shared/Hero";
 
 const List = ({ state }) => {
   // Get the data of the current list.
@@ -19,30 +20,11 @@ const List = ({ state }) => {
 
   return (
     <>
-      <Container>
-        {/* If the list is a taxonomy, we render a title. */}
-        {data.isTaxonomy && (
-          <Header>
-            {data.taxonomy}:{" "}
-            <b>{decode(state.source[data.taxonomy][data.id].name)}</b>
-          </Header>
-        )}
-
-        {/* If the list is for a specific author, we render a title. */}
-        {data.isAuthor && (
-          <Header>
-            Author: <b>{decode(state.source.author[data.id].name)}</b>
-          </Header>
-        )}
-
-        {/* Iterate over the items of the list. */}
-        {data.items.map(({ type, id }) => {
-          const item = state.source[type][id];
-          // Render one Item component for each one.
-          return <Item key={item.id} item={item} />;
-        })}
-        <Pagination />
+      <MiniContainer css={css`margin-top: 60px;`}>
+        <Hero posts={latestPosts} />
         <Projects />
+      </MiniContainer>
+      <Container>
         <SeeMore>
           <TopPosts>
             <TopPostsTitle>Importante</TopPostsTitle>
@@ -78,28 +60,47 @@ const List = ({ state }) => {
           </LastPosts>
         </SeeMore>
       </Container>
-      <AboutUs>
-        <div className="about__info">
-          <h3>Documentacion de la comunidad</h3>
-          <p>
-            Si quieres colaborar con nosotros en nuestros proyectos te
-            recomendamos que les nuestra documentación para que estés en
-            sintonía con nuestra comunidad. ¡Te esperamos!
-          </p>
-          <a>
-            Ver <span className="right-arrow"></span>
-          </a>
-        </div>
-        <div className="about__image">
-          <img src={AboutImage} />
-        </div>
-      </AboutUs>
+      <MiniContainer>
+        <AboutUs>
+          <div className="about__info">
+            <h3>Documentacion de la comunidad</h3>
+            <p>
+              Si quieres colaborar con nosotros en nuestros proyectos te
+              recomendamos que les nuestra documentación para que estés en
+              sintonía con nuestra comunidad. ¡Te esperamos!
+            </p>
+            <a>
+              Ver <span className="right-arrow"></span>
+            </a>
+          </div>
+          <div className="about__image">
+            <img src={AboutImage} />
+          </div>
+        </AboutUs>
+      </MiniContainer>
     </>
   );
 };
 
 export default connect(List);
 
+const MiniContainer = styled.div`
+  max-width: 1280px;
+
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+  }
+`;
+const Container = styled.section`
+  width: 800px;
+  margin: 0;
+  padding: 24px;
+  list-style: none;
+
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+  }
+`;
 const CenterDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -148,19 +149,6 @@ const SeeMoreLink = styled.a`
   text-transform: uppercase;
   color: red !important;
 `;
-
-const Container = styled.section`
-  width: 800px;
-  margin: 0;
-  padding: 24px;
-  list-style: none;
-`;
-
-const Header = styled.h3`
-  font-weight: 300;
-  text-transform: capitalize;
-  color: rgba(12, 17, 43, 0.9);
-`;
 const AboutUs = styled.div`
   box-sizing: border-box;
   margin-block: 229px;
@@ -204,5 +192,9 @@ const AboutUs = styled.div`
   .about__image img {
     width: 456px;
     height: 427px;
-    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
