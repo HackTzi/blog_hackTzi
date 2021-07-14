@@ -17,12 +17,17 @@
   },
   "prettier": {},
   "dependencies": {
-    "@frontity/core": "^1.9.1",
-    "@frontity/head-tags": "^1.0.8",
-    "@frontity/html2react": "^1.5.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@frontity/core": "^1.14.2",
+    "@frontity/head-tags": "^1.1.1",
+    "@frontity/html2react": "^1.7.0",
     "@frontity/mars-theme": "./packages/mars-theme",
-    "@frontity/tiny-router": "^1.2.4",
-    "@frontity/wp-source": "^1.10.0",
-    "frontity": "^1.13.0"
+    "@frontity/tiny-router": "^1.4.2",
+    "@frontity/wp-source": "^1.11.5",
+    "animejs": "^3.2.1",
+    "frontity": "^1.16.0"
   }
 }

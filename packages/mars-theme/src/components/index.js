@@ -8,6 +8,11 @@ import Post from "./post";
 import Loading from "./loading";
 import Title from "./title";
 import PageError from "./page-error";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faCheckSquare, faCoffee, faSearch, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'; // aqui se importan los iconos
+
+library.add(fab, faCheckSquare, faCoffee, faSearch, faLongArrowAltRight); // aqui se importan los iconos
 
 /**
  * Theme is the root React component of our theme. The one we will export
@@ -16,6 +21,7 @@ import PageError from "./page-error";
 const Theme = ({ state }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
+  const { mode } = state.theme;
 
   return (
     <>
@@ -38,7 +44,7 @@ const Theme = ({ state }) => {
 
       {/* Add the main section. It renders a different component depending
       on the type of URL we are in. */}
-      <Main>
+      <Main theme={mode}>
         <Switch>
           <Loading when={data.isFetching} />
           <List when={data.isArchive} />
@@ -53,10 +59,10 @@ const Theme = ({ state }) => {
 export default connect(Theme);
 
 const globalStyles = css`
+  @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Rubik", sans-serif !important;
   }
   a,
   a:visited {
@@ -74,6 +80,9 @@ const HeadContainer = styled.div`
 
 const Main = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  background: white;
+  align-items: center;
+  // background: ${(props) => (props.theme === "light" ? "white" : "#172237")};
+  background: ${(props) => (props.theme === "light" ? "white" : "#1C283E")};
 `;
