@@ -2,7 +2,7 @@ const settings = {
   "name": "blog-hacktzi",
   "state": {
     "frontity": {
-      "url": "https://ht.monlogo.co",
+      "url": "https://writer.hacktzi.com/",
       "title": "HackTzi",
       "description": "El blog de HackTzi con WP y Frontity"
     }
@@ -16,14 +16,6 @@ const settings = {
             [
               "Home",
               "/"
-            ],
-            [
-              "Error 404",
-              "/category/nature/"
-            ],
-            [
-              "Example page",
-              "/pagina-ejemplo/"
             ]
           ],
           "featured": {
@@ -37,7 +29,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "url": "https://ht.monlogo.co"
+          "url": "https://writer.hacktzi.com/"
         }
       }
     },

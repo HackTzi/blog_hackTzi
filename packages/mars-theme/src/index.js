@@ -25,6 +25,7 @@ const marsTheme = {
         showOnList: false,
         showOnPost: false,
       },
+      mode: 'light',
     },
   },
 
@@ -40,6 +41,12 @@ const marsTheme = {
       closeMobileMenu: ({ state }) => {
         state.theme.isMobileMenuOpen = false;
       },
+      setLightMode: ({ state }) => {
+        state.theme.mode = 'light';
+      },
+      setDarkMode: ({ state }) => {
+        state.theme.mode = 'dark';
+      }
     },
   },
   libraries: {
